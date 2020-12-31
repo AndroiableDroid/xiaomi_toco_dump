@@ -1,0 +1,683 @@
+/dts-v1/;
+
+/ {
+	compatible = "qcom,sm6150-rumi\0qcom,sm6150\0qcom,rumi";
+	model = "RUMI";
+	qcom,board-id = <0x0f 0x00>;
+	qcom,msm-id = <0x163 0x00>;
+
+	__fixups__ {
+		qupv3_se0_2uart = "/fragment@1:target:0";
+		sdc1_clk_off = "/fragment@2/__overlay__:pinctrl-1:0";
+		sdc1_clk_on = "/fragment@2/__overlay__:pinctrl-0:0";
+		sdc1_cmd_off = "/fragment@2/__overlay__:pinctrl-1:4";
+		sdc1_cmd_on = "/fragment@2/__overlay__:pinctrl-0:4";
+		sdc1_data_off = "/fragment@2/__overlay__:pinctrl-1:8";
+		sdc1_data_on = "/fragment@2/__overlay__:pinctrl-0:8";
+		sdc2_clk_off = "/fragment@3/__overlay__:pinctrl-1:0";
+		sdc2_clk_on = "/fragment@3/__overlay__:pinctrl-0:0";
+		sdc2_cmd_off = "/fragment@3/__overlay__:pinctrl-1:4";
+		sdc2_cmd_on = "/fragment@3/__overlay__:pinctrl-0:4";
+		sdc2_data_off = "/fragment@3/__overlay__:pinctrl-1:8";
+		sdc2_data_on = "/fragment@3/__overlay__:pinctrl-0:8";
+		sdhc_1 = "/fragment@2:target:0";
+		sdhc_2 = "/fragment@3:target:0";
+		soc = "/fragment@0:target:0\0/fragment@7:target:0";
+		spmi_bus = "/fragment@6:target:0";
+		thermal_zones = "/fragment@8:target:0";
+		ufs_phy_gdsc = "/fragment@5/__overlay__:vdd-hba-supply:0";
+		ufshc_mem = "/fragment@5:target:0";
+		ufsphy_mem = "/fragment@4:target:0";
+		usb0 = "/fragment@9:target:0";
+		usb_nop_phy = "/fragment@9/__overlay__/dwc3@a600000:usb-phy:4";
+		usb_qmp_phy = "/fragment@10:target:0";
+	};
+
+	__local_fixups__ {
+
+		fragment@2 {
+
+			__overlay__ {
+				vdd-io-supply = <0x00>;
+				vdd-supply = <0x00>;
+			};
+		};
+
+		fragment@3 {
+
+			__overlay__ {
+				vdd-io-supply = <0x00>;
+				vdd-supply = <0x00>;
+			};
+		};
+
+		fragment@4 {
+
+			__overlay__ {
+				vdda-phy-supply = <0x00>;
+				vdda-pll-supply = <0x00>;
+			};
+		};
+
+		fragment@5 {
+
+			__overlay__ {
+				qcom,vddp-ref-clk-supply = <0x00>;
+				vcc-supply = <0x00>;
+				vccq2-supply = <0x00>;
+			};
+		};
+
+		fragment@9 {
+
+			__overlay__ {
+
+				dwc3@a600000 {
+					usb-phy = <0x00>;
+				};
+			};
+		};
+	};
+
+	__symbols__ {
+		BOB = "/regulator-pm6150l-bob";
+		BOB_AO = "/regulator-pm6150l-bob-ao";
+		L10A = "/regulator-pm6150-l10";
+		L10C = "/regulator-pm6150l-l10";
+		L11A = "/regulator-pm6150-l11";
+		L11C = "/regulator-pm6150l-l11";
+		L12A = "/regulator-pm6150-l12";
+		L13A = "/regulator-pm6150-l13";
+		L14A = "/regulator-pm6150-l14";
+		L15A = "/regulator-pm6150-l15";
+		L16A = "/regulator-pm6150-l16";
+		L17A = "/regulator-pm6150-l17";
+		L18A = "/regulator-pm6150-l18";
+		L19A = "/regulator-pm6150-l19";
+		L1A = "/regulator-pm6150-l1";
+		L1C = "/regulator-pm6150l-l1";
+		L2A = "/regulator-pm6150-l2";
+		L2C = "/regulator-pm6150l-l2";
+		L3A = "/regulator-pm6150-l3";
+		L3C = "/regulator-pm6150l-l3";
+		L4A = "/regulator-pm6150-l4";
+		L4C = "/regulator-pm6150l-l4";
+		L5A = "/regulator-pm6150-l5";
+		L5C = "/regulator-pm6150l-l5";
+		L6A = "/regulator-pm6150-l6";
+		L6C = "/regulator-pm6150l-l6";
+		L7A_LEVEL = "/regulator-pm6150-l7";
+		L7C = "/regulator-pm6150l-l7";
+		L8A_LEVEL = "/regulator-pm6150-l8";
+		L8C = "/regulator-pm6150l-l8";
+		L9A = "/regulator-pm6150-l9";
+		L9C = "/regulator-pm6150l-l9";
+		S1C = "/regulator-pm6150l-s1";
+		S2C = "/regulator-pm6150l-s2";
+		S3A_LEVEL = "/regulator-pm6150-s3";
+		S3A_LEVEL_AO = "/regulator-pm6150-s3-level-ao";
+		S7C_LEVEL = "/regulator-pm6150l-s7";
+		S8C = "/regulator-pm6150l-s8";
+		VDD_CX_LEVEL = "/regulator-pm6150-s1";
+		VDD_CX_LEVEL_AO = "/regulator-pm6150-s1-level-ao";
+		VDD_MSS_LEVEL = "/regulator-pm6150l-s7";
+		VDD_MX_LEVEL = "/regulator-pm6150-s3";
+		VDD_MX_LEVEL_AO = "/regulator-pm6150-s3-level-ao";
+		pm6150_l1 = "/regulator-pm6150-l1";
+		pm6150_l10 = "/regulator-pm6150-l10";
+		pm6150_l11 = "/regulator-pm6150-l11";
+		pm6150_l12 = "/regulator-pm6150-l12";
+		pm6150_l13 = "/regulator-pm6150-l13";
+		pm6150_l14 = "/regulator-pm6150-l14";
+		pm6150_l15 = "/regulator-pm6150-l15";
+		pm6150_l16 = "/regulator-pm6150-l16";
+		pm6150_l17 = "/regulator-pm6150-l17";
+		pm6150_l18 = "/regulator-pm6150-l18";
+		pm6150_l19 = "/regulator-pm6150-l19";
+		pm6150_l2 = "/regulator-pm6150-l2";
+		pm6150_l3 = "/regulator-pm6150-l3";
+		pm6150_l4 = "/regulator-pm6150-l4";
+		pm6150_l5 = "/regulator-pm6150-l5";
+		pm6150_l6 = "/regulator-pm6150-l6";
+		pm6150_l7_level = "/regulator-pm6150-l7";
+		pm6150_l8_level = "/regulator-pm6150-l8";
+		pm6150_l9 = "/regulator-pm6150-l9";
+		pm6150_s1_level = "/regulator-pm6150-s1";
+		pm6150_s1_level_ao = "/regulator-pm6150-s1-level-ao";
+		pm6150_s3_level = "/regulator-pm6150-s3";
+		pm6150_s3_level_ao = "/regulator-pm6150-s3-level-ao";
+		pm6150l_bob = "/regulator-pm6150l-bob";
+		pm6150l_bob_ao = "/regulator-pm6150l-bob-ao";
+		pm6150l_l1 = "/regulator-pm6150l-l1";
+		pm6150l_l10 = "/regulator-pm6150l-l10";
+		pm6150l_l11 = "/regulator-pm6150l-l11";
+		pm6150l_l2 = "/regulator-pm6150l-l2";
+		pm6150l_l3 = "/regulator-pm6150l-l3";
+		pm6150l_l4 = "/regulator-pm6150l-l4";
+		pm6150l_l5 = "/regulator-pm6150l-l5";
+		pm6150l_l6 = "/regulator-pm6150l-l6";
+		pm6150l_l7 = "/regulator-pm6150l-l7";
+		pm6150l_l8 = "/regulator-pm6150l-l8";
+		pm6150l_l9 = "/regulator-pm6150l-l9";
+		pm6150l_s1 = "/regulator-pm6150l-s1";
+		pm6150l_s2 = "/regulator-pm6150l-s2";
+		pm6150l_s7_level = "/regulator-pm6150l-s7";
+		pm6150l_s8 = "/regulator-pm6150l-s8";
+		usb_emu_phy = "/fragment@0/__overlay__/usb_emu_phy@a720000";
+		wdog = "/fragment@0/__overlay__/qcom,wdt@17c10000";
+	};
+
+	fragment@0 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+
+			qcom,wdt@17c10000 {
+				phandle = <0x09>;
+				status = "disabled";
+			};
+
+			timer {
+				clock-frequency = <0xf4240>;
+			};
+
+			timer@0x17c00000 {
+				clock-frequency = <0xf4240>;
+			};
+
+			usb_emu_phy@a720000 {
+				compatible = "qcom,usb-emu-phy";
+				phandle = <0x08>;
+				qcom,emu-init-seq = <0xfff0 0x04 0xfff3 0x04 0x40 0x04 0xfff3 0x04 0xfff0 0x04 0x100000 0x20 0x00 0x20 0x1a0 0x20 0x100000 0x3c 0x00 0x3c 0x10060 0x3c 0x00 0x04>;
+				reg = <0xa720000 0x9500 0xa6f8800 0x100>;
+				reg-names = "base\0qcratch_base";
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "ok";
+		};
+	};
+
+	fragment@10 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@2 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			pinctrl-0 = <0xffffffff 0xffffffff 0xffffffff>;
+			pinctrl-1 = <0xffffffff 0xffffffff 0xffffffff>;
+			pinctrl-names = "active\0sleep";
+			qcom,bus-speed-mode = "HS200_1p8v\0DDR_1p8v";
+			qcom,clk-rates = <0x61a80 0x1312d00 0x17d7840 0x2faf080>;
+			qcom,vdd-current-level = <0xc8 0x8b290>;
+			qcom,vdd-io-always-on;
+			qcom,vdd-io-current-level = <0xc8 0x4f588>;
+			qcom,vdd-io-lpm-sup;
+			qcom,vdd-io-voltage-level = <0x1b7740 0x1b7740>;
+			qcom,vdd-voltage-level = <0x2d2a80 0x2d2a80>;
+			status = "ok";
+			vdd-io-supply = <0x02>;
+			vdd-supply = <0x01>;
+		};
+	};
+
+	fragment@3 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			pinctrl-0 = <0xffffffff 0xffffffff 0xffffffff>;
+			pinctrl-1 = <0xffffffff 0xffffffff 0xffffffff>;
+			pinctrl-names = "active\0sleep";
+			qcom,bus-speed-mode = "SDR12\0SDR25\0SDR50";
+			qcom,clk-rates = <0x61a80 0x1312d00 0x17d7840 0x2faf080>;
+			qcom,vdd-current-level = <0xc8 0xc3500>;
+			qcom,vdd-io-current-level = <0xc8 0x55f0>;
+			qcom,vdd-io-voltage-level = <0x1b7740 0x2d0370>;
+			qcom,vdd-voltage-level = <0x2d2a80 0x2d2a80>;
+			status = "disabled";
+			vdd-io-supply = <0x04>;
+			vdd-supply = <0x03>;
+		};
+	};
+
+	fragment@4 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			compatible = "qcom,ufs-phy-qrbtc-sdm845";
+			status = "ok";
+			vdda-phy-max-microamp = <0xc8c8>;
+			vdda-phy-supply = <0x05>;
+			vdda-pll-max-microamp = <0x3778>;
+			vdda-pll-supply = <0x06>;
+		};
+	};
+
+	fragment@5 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			limit-rx-hs-gear = <0x01>;
+			limit-tx-hs-gear = <0x01>;
+			qcom,disable-lpm;
+			qcom,vddp-ref-clk-max-microamp = <0x64>;
+			qcom,vddp-ref-clk-max-uV = <0x1339e0>;
+			qcom,vddp-ref-clk-min-uV = <0x12cc80>;
+			qcom,vddp-ref-clk-supply = <0x07>;
+			rpm-level = <0x00>;
+			scsi-cmd-timeout = <0x493e0>;
+			spm-level = <0x00>;
+			status = "ok";
+			vcc-max-microamp = <0x927c0>;
+			vcc-supply = <0x01>;
+			vccq2-max-microamp = <0x927c0>;
+			vccq2-supply = <0x02>;
+			vdd-hba-fixed-regulator;
+			vdd-hba-supply = <0xffffffff>;
+		};
+	};
+
+	fragment@6 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@7 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+		};
+	};
+
+	fragment@8 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+		};
+	};
+
+	fragment@9 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+
+			dwc3@a600000 {
+				dr_mode = "otg";
+				maximum-speed = "high-speed";
+				usb-phy = <0x08 0xffffffff>;
+			};
+		};
+	};
+
+	regulator-pm6150-l1 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x12>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x131aa0>;
+		regulator-min-microvolt = <0x124f80>;
+		regulator-name = "pm6150_l1";
+	};
+
+	regulator-pm6150-l10 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x1a>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x1be888>;
+		regulator-min-microvolt = <0x1b7740>;
+		regulator-name = "pm6150_l10";
+	};
+
+	regulator-pm6150-l11 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x06>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x1cd6d0>;
+		regulator-min-microvolt = <0x1b7740>;
+		regulator-name = "pm6150_l11";
+	};
+
+	regulator-pm6150-l12 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x02>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x1dc130>;
+		regulator-min-microvolt = <0x1b7740>;
+		regulator-name = "pm6150_l12";
+	};
+
+	regulator-pm6150-l13 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x1b>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x1cfde0>;
+		regulator-min-microvolt = <0x1b7740>;
+		regulator-name = "pm6150_l13";
+	};
+
+	regulator-pm6150-l14 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x1c>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x1c3a90>;
+		regulator-min-microvolt = <0x1b7740>;
+		regulator-name = "pm6150_l14";
+	};
+
+	regulator-pm6150-l15 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x1d>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x1cfde0>;
+		regulator-min-microvolt = <0x1b7740>;
+		regulator-name = "pm6150_l15";
+	};
+
+	regulator-pm6150-l16 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x1e>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x2d5190>;
+		regulator-min-microvolt = <0x251430>;
+		regulator-name = "pm6150_l16";
+	};
+
+	regulator-pm6150-l17 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x1f>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x314930>;
+		regulator-min-microvolt = <0x2dc6c0>;
+		regulator-name = "pm6150_l17";
+	};
+
+	regulator-pm6150-l18 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x20>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x2de600>;
+		regulator-min-microvolt = <0x2dc6c0>;
+		regulator-name = "pm6150_l18";
+	};
+
+	regulator-pm6150-l19 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x21>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x2de600>;
+		regulator-min-microvolt = <0x2932e0>;
+		regulator-name = "pm6150_l19";
+	};
+
+	regulator-pm6150-l2 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x13>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x100590>;
+		regulator-min-microvolt = <0xf4240>;
+		regulator-name = "pm6150_l2";
+	};
+
+	regulator-pm6150-l3 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x14>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x102ca0>;
+		regulator-min-microvolt = <0xf4240>;
+		regulator-name = "pm6150_l3";
+	};
+
+	regulator-pm6150-l4 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x05>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0xee098>;
+		regulator-min-microvolt = <0xd59f8>;
+		regulator-name = "pm6150_l4";
+	};
+
+	regulator-pm6150-l5 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x15>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x2d5190>;
+		regulator-min-microvolt = <0x2625a0>;
+		regulator-name = "pm6150_l5";
+	};
+
+	regulator-pm6150-l6 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x16>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x9eb10>;
+		regulator-min-microvolt = <0x927c0>;
+		regulator-name = "pm6150_l6";
+	};
+
+	regulator-pm6150-l7 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x17>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x10000>;
+		regulator-min-microvolt = <0x11>;
+		regulator-name = "pm6150_l7_level";
+	};
+
+	regulator-pm6150-l8 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x18>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x10000>;
+		regulator-min-microvolt = <0x11>;
+		regulator-name = "pm6150_l8_level";
+	};
+
+	regulator-pm6150-l9 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x19>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0xb1bc0>;
+		regulator-min-microvolt = <0x61a80>;
+		regulator-name = "pm6150_l9";
+	};
+
+	regulator-pm6150-s1 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x0a>;
+		qcom,hpm-min-load = <0x186a0>;
+		regulator-max-microvolt = <0x10000>;
+		regulator-min-microvolt = <0x11>;
+		regulator-name = "pm6150_s1_level";
+	};
+
+	regulator-pm6150-s1-level-ao {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x0b>;
+		qcom,hpm-min-load = <0x186a0>;
+		regulator-max-microvolt = <0x10000>;
+		regulator-min-microvolt = <0x11>;
+		regulator-name = "pm6150_s1_level_ao";
+	};
+
+	regulator-pm6150-s3 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x0c>;
+		qcom,hpm-min-load = <0x186a0>;
+		regulator-max-microvolt = <0x10000>;
+		regulator-min-microvolt = <0x11>;
+		regulator-name = "pm6150_s3_level";
+	};
+
+	regulator-pm6150-s3-level-ao {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x0d>;
+		qcom,hpm-min-load = <0x186a0>;
+		regulator-max-microvolt = <0x10000>;
+		regulator-min-microvolt = <0x11>;
+		regulator-name = "pm6150_s3_level_ao";
+	};
+
+	regulator-pm6150l-bob {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x29>;
+		regulator-max-microvolt = <0x3c6cc0>;
+		regulator-min-microvolt = "\02K";
+		regulator-name = "pm6150l_bob";
+	};
+
+	regulator-pm6150l-bob-ao {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x2a>;
+		regulator-max-microvolt = <0x3c6cc0>;
+		regulator-min-microvolt = "\02K";
+		regulator-name = "pm6150l_bob_ao";
+	};
+
+	regulator-pm6150l-l1 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x22>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x1cfde0>;
+		regulator-min-microvolt = <0x1b7740>;
+		regulator-name = "pm6150l_l1";
+	};
+
+	regulator-pm6150l-l10 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x28>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x328980>;
+		regulator-min-microvolt = <0x30d400>;
+		regulator-name = "pm6150l_l10";
+	};
+
+	regulator-pm6150l-l11 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x01>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x328980>;
+		regulator-min-microvolt = <0x2d0370>;
+		regulator-name = "pm6150l_l11";
+	};
+
+	regulator-pm6150l-l2 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x23>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x13e5c0>;
+		regulator-min-microvolt = <0x13d620>;
+		regulator-name = "pm6150l_l2";
+	};
+
+	regulator-pm6150l-l3 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x07>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x1339e0>;
+		regulator-min-microvolt = <0x12cc80>;
+		regulator-name = "pm6150l_l3";
+	};
+
+	regulator-pm6150l-l4 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x24>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x2d0370>;
+		regulator-min-microvolt = <0x192d50>;
+		regulator-name = "pm6150l_l4";
+	};
+
+	regulator-pm6150l-l5 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x25>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x2d0370>;
+		regulator-min-microvolt = <0x192d50>;
+		regulator-name = "pm6150l_l5";
+	};
+
+	regulator-pm6150l-l6 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x04>;
+		qcom,hpm-min-load = <0x1388>;
+		regulator-max-microvolt = <0x2f4d60>;
+		regulator-min-microvolt = <0x192d50>;
+		regulator-name = "pm6150l_l6";
+	};
+
+	regulator-pm6150l-l7 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x26>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x328980>;
+		regulator-min-microvolt = <0x2dc6c0>;
+		regulator-name = "pm6150l_l7";
+	};
+
+	regulator-pm6150l-l8 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x27>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x1cfde0>;
+		regulator-min-microvolt = <0x1b7740>;
+		regulator-name = "pm6150l_l8";
+	};
+
+	regulator-pm6150l-l9 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x03>;
+		qcom,hpm-min-load = <0x2710>;
+		regulator-max-microvolt = <0x328980>;
+		regulator-min-microvolt = <0x2d0370>;
+		regulator-name = "pm6150l_l9";
+	};
+
+	regulator-pm6150l-s1 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x0e>;
+		qcom,hpm-min-load = <0x186a0>;
+		regulator-max-microvolt = <0x113640>;
+		regulator-min-microvolt = <0x113640>;
+		regulator-name = "pm6150l_s1";
+	};
+
+	regulator-pm6150l-s2 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x0f>;
+		qcom,hpm-min-load = <0x186a0>;
+		regulator-max-microvolt = <0x124f80>;
+		regulator-min-microvolt = <0x54f60>;
+		regulator-name = "pm6150l_s2";
+	};
+
+	regulator-pm6150l-s7 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x10>;
+		qcom,hpm-min-load = <0x186a0>;
+		regulator-max-microvolt = <0x10000>;
+		regulator-min-microvolt = <0x11>;
+		regulator-name = "pm6150l_s7_level";
+	};
+
+	regulator-pm6150l-s8 {
+		compatible = "qcom,stub-regulator";
+		phandle = <0x11>;
+		qcom,hpm-min-load = <0x186a0>;
+		regulator-max-microvolt = <0x155cc0>;
+		regulator-min-microvolt = <0x124f80>;
+		regulator-name = "pm6150l_s8";
+	};
+};

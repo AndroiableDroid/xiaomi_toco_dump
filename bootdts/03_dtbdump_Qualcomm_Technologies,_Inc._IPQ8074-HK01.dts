@@ -1,0 +1,229 @@
+/dts-v1/;
+
+/ {
+	#address-cells = <0x02>;
+	#size-cells = <0x02>;
+	compatible = "qcom,ipq8074-hk01\0qcom,ipq8074";
+	interrupt-parent = <0x01>;
+	model = "Qualcomm Technologies, Inc. IPQ8074-HK01";
+
+	__symbols__ {
+		CPU0 = "/cpus/cpu@0";
+		CPU1 = "/cpus/cpu@1";
+		CPU2 = "/cpus/cpu@2";
+		CPU3 = "/cpus/cpu@3";
+		L2_0 = "/cpus/l2-cache";
+		blsp1_uart5 = "/soc/serial@78b3000";
+		gcc = "/soc/gcc@1800000";
+		intc = "/soc/interrupt-controller@b000000";
+		serial_4_pins = "/soc/pinctrl@1000000/serial4_pinmux";
+		sleep_clk = "/clocks/sleep_clk";
+		soc = "/soc";
+		xo = "/clocks/xo";
+	};
+
+	aliases {
+		serial0 = "/soc/serial@78b3000";
+	};
+
+	chosen {
+		stdout-path = "serial0";
+	};
+
+	clocks {
+
+		sleep_clk {
+			#clock-cells = <0x00>;
+			clock-frequency = <0x7d00>;
+			compatible = "fixed-clock";
+			phandle = <0x0b>;
+		};
+
+		xo {
+			#clock-cells = <0x00>;
+			clock-frequency = <0x124f800>;
+			compatible = "fixed-clock";
+			phandle = <0x0c>;
+		};
+	};
+
+	cpus {
+		#address-cells = <0x01>;
+		#size-cells = <0x00>;
+
+		cpu@0 {
+			compatible = "arm,cortex-a53\0arm,armv8";
+			device_type = "cpu";
+			enable-method = "psci";
+			next-level-cache = <0x04>;
+			phandle = <0x07>;
+			reg = <0x00>;
+		};
+
+		cpu@1 {
+			compatible = "arm,cortex-a53\0arm,armv8";
+			device_type = "cpu";
+			enable-method = "psci";
+			next-level-cache = <0x04>;
+			phandle = <0x08>;
+			reg = <0x01>;
+		};
+
+		cpu@2 {
+			compatible = "arm,cortex-a53\0arm,armv8";
+			device_type = "cpu";
+			enable-method = "psci";
+			next-level-cache = <0x04>;
+			phandle = <0x09>;
+			reg = <0x02>;
+		};
+
+		cpu@3 {
+			compatible = "arm,cortex-a53\0arm,armv8";
+			device_type = "cpu";
+			enable-method = "psci";
+			next-level-cache = <0x04>;
+			phandle = <0x0a>;
+			reg = <0x03>;
+		};
+
+		l2-cache {
+			cache-level = <0x02>;
+			compatible = "cache";
+			phandle = <0x04>;
+		};
+	};
+
+	memory {
+		device_type = "memory";
+		reg = <0x00 0x40000000 0x00 0x20000000>;
+	};
+
+	pmu {
+		compatible = "arm,armv8-pmuv3";
+		interrupts = <0x01 0x07 0xf00>;
+	};
+
+	psci {
+		compatible = "arm,psci-1.0";
+		method = "smc";
+	};
+
+	soc {
+		#address-cells = <0x01>;
+		#size-cells = <0x01>;
+		compatible = "simple-bus";
+		phandle = <0x05>;
+		ranges = <0x00 0x00 0x00 0xffffffff>;
+
+		gcc@1800000 {
+			#clock-cells = <0x01>;
+			#reset-cells = <0x01>;
+			compatible = "qcom,gcc-ipq8074";
+			phandle = <0x02>;
+			reg = <0x1800000 0x80000>;
+		};
+
+		interrupt-controller@b000000 {
+			#interrupt-cells = <0x03>;
+			compatible = "qcom,msm-qgic2";
+			interrupt-controller;
+			phandle = <0x01>;
+			reg = <0xb000000 0x1000 0xb002000 0x1000>;
+		};
+
+		pinctrl@1000000 {
+			#gpio-cells = <0x02>;
+			#interrupt-cells = <0x02>;
+			compatible = "qcom,ipq8074-pinctrl";
+			gpio-controller;
+			interrupt-controller;
+			interrupts = <0x00 0xd0 0x04>;
+			reg = <0x1000000 0x300000>;
+
+			serial4_pinmux {
+				phandle = <0x03>;
+
+				mux {
+					bias-disable;
+					function = "blsp4_uart1";
+					pins = "gpio23\0gpio24";
+				};
+			};
+		};
+
+		serial@78b3000 {
+			clock-names = "core\0iface";
+			clocks = <0x02 0x26 0x02 0x15>;
+			compatible = "qcom,msm-uartdm-v1.4\0qcom,msm-uartdm";
+			interrupts = <0x00 0x134 0x04>;
+			phandle = <0x06>;
+			pinctrl-0 = <0x03>;
+			pinctrl-names = "default";
+			reg = <0x78b3000 0x200>;
+			status = "ok";
+		};
+
+		timer {
+			compatible = "arm,armv8-timer";
+			interrupts = <0x01 0x02 0xf08 0x01 0x03 0xf08 0x01 0x04 0xf08 0x01 0x01 0xf08>;
+		};
+
+		timer@b120000 {
+			#address-cells = <0x01>;
+			#size-cells = <0x01>;
+			clock-frequency = <0x124f800>;
+			compatible = "arm,armv7-timer-mem";
+			ranges;
+			reg = <0xb120000 0x1000>;
+
+			frame@b120000 {
+				frame-number = <0x00>;
+				interrupts = <0x00 0x08 0x04 0x00 0x07 0x04>;
+				reg = <0xb121000 0x1000 0xb122000 0x1000>;
+			};
+
+			frame@b123000 {
+				frame-number = <0x01>;
+				interrupts = <0x00 0x09 0x04>;
+				reg = <0xb123000 0x1000>;
+				status = "disabled";
+			};
+
+			frame@b124000 {
+				frame-number = <0x02>;
+				interrupts = <0x00 0x0a 0x04>;
+				reg = <0xb124000 0x1000>;
+				status = "disabled";
+			};
+
+			frame@b125000 {
+				frame-number = <0x03>;
+				interrupts = <0x00 0x0b 0x04>;
+				reg = <0xb125000 0x1000>;
+				status = "disabled";
+			};
+
+			frame@b126000 {
+				frame-number = <0x04>;
+				interrupts = <0x00 0x0c 0x04>;
+				reg = <0xb126000 0x1000>;
+				status = "disabled";
+			};
+
+			frame@b127000 {
+				frame-number = <0x05>;
+				interrupts = <0x00 0x0d 0x04>;
+				reg = <0xb127000 0x1000>;
+				status = "disabled";
+			};
+
+			frame@b128000 {
+				frame-number = <0x06>;
+				interrupts = <0x00 0x0e 0x04>;
+				reg = <0xb128000 0x1000>;
+				status = "disabled";
+			};
+		};
+	};
+};
